@@ -1,2 +1,16 @@
-- name: Generate Supabase Database types
-  uses: lyqht/generate-supabase-db-types-github-action@v0.1.0
+name: Update Supabase database types
+on:
+  schedule:
+    - cron: "*/60 * * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: lyqht/generate-supabase-database-types@main
+        with:
+          SUPABASE_URL: ${{secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          OUTPUT_PATH: types/supabase.ts
