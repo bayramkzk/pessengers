@@ -1,11 +1,4 @@
 import { createClient } from "@supabase/supabase-js";
+import { SUPABASE_KEY, SUPABASE_URL } from "constants/env";
 
-const createSupabaseClient = () => {
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
-    throw new Error("SUPABASE_URL and SUPABASE_KEY must be set");
-  }
-
-  return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-};
-
-export const supabase = createSupabaseClient();
+export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
