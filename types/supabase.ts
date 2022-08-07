@@ -12,13 +12,13 @@ export interface paths {
       };
     };
   };
-  "/user_tags": {
+  "/sample_user_tags": {
     get: {
       parameters: {
         query: {
-          user_id?: parameters["rowFilter.user_tags.user_id"];
-          tag_id?: parameters["rowFilter.user_tags.tag_id"];
-          created_at?: parameters["rowFilter.user_tags.created_at"];
+          user_id?: parameters["rowFilter.sample_user_tags.user_id"];
+          tag_id?: parameters["rowFilter.sample_user_tags.tag_id"];
+          created_at?: parameters["rowFilter.sample_user_tags.created_at"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -40,7 +40,7 @@ export interface paths {
       responses: {
         /** OK */
         200: {
-          schema: definitions["user_tags"][];
+          schema: definitions["sample_user_tags"][];
         };
         /** Partial Content */
         206: unknown;
@@ -49,8 +49,8 @@ export interface paths {
     post: {
       parameters: {
         body: {
-          /** user_tags */
-          user_tags?: definitions["user_tags"];
+          /** sample_user_tags */
+          sample_user_tags?: definitions["sample_user_tags"];
         };
         query: {
           /** Filtering Columns */
@@ -69,9 +69,9 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          user_id?: parameters["rowFilter.user_tags.user_id"];
-          tag_id?: parameters["rowFilter.user_tags.tag_id"];
-          created_at?: parameters["rowFilter.user_tags.created_at"];
+          user_id?: parameters["rowFilter.sample_user_tags.user_id"];
+          tag_id?: parameters["rowFilter.sample_user_tags.tag_id"];
+          created_at?: parameters["rowFilter.sample_user_tags.created_at"];
         };
         header: {
           /** Preference */
@@ -86,13 +86,13 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          user_id?: parameters["rowFilter.user_tags.user_id"];
-          tag_id?: parameters["rowFilter.user_tags.tag_id"];
-          created_at?: parameters["rowFilter.user_tags.created_at"];
+          user_id?: parameters["rowFilter.sample_user_tags.user_id"];
+          tag_id?: parameters["rowFilter.sample_user_tags.tag_id"];
+          created_at?: parameters["rowFilter.sample_user_tags.created_at"];
         };
         body: {
-          /** user_tags */
-          user_tags?: definitions["user_tags"];
+          /** sample_user_tags */
+          sample_user_tags?: definitions["sample_user_tags"];
         };
         header: {
           /** Preference */
@@ -105,15 +105,14 @@ export interface paths {
       };
     };
   };
-  "/users": {
+  "/sample_tags": {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.users.id"];
-          first_name?: parameters["rowFilter.users.first_name"];
-          last_name?: parameters["rowFilter.users.last_name"];
-          gender?: parameters["rowFilter.users.gender"];
-          created_at?: parameters["rowFilter.users.created_at"];
+          id?: parameters["rowFilter.sample_tags.id"];
+          name?: parameters["rowFilter.sample_tags.name"];
+          rate?: parameters["rowFilter.sample_tags.rate"];
+          created_at?: parameters["rowFilter.sample_tags.created_at"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -135,7 +134,7 @@ export interface paths {
       responses: {
         /** OK */
         200: {
-          schema: definitions["users"][];
+          schema: definitions["sample_tags"][];
         };
         /** Partial Content */
         206: unknown;
@@ -144,8 +143,8 @@ export interface paths {
     post: {
       parameters: {
         body: {
-          /** users */
-          users?: definitions["users"];
+          /** sample_tags */
+          sample_tags?: definitions["sample_tags"];
         };
         query: {
           /** Filtering Columns */
@@ -164,11 +163,10 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.users.id"];
-          first_name?: parameters["rowFilter.users.first_name"];
-          last_name?: parameters["rowFilter.users.last_name"];
-          gender?: parameters["rowFilter.users.gender"];
-          created_at?: parameters["rowFilter.users.created_at"];
+          id?: parameters["rowFilter.sample_tags.id"];
+          name?: parameters["rowFilter.sample_tags.name"];
+          rate?: parameters["rowFilter.sample_tags.rate"];
+          created_at?: parameters["rowFilter.sample_tags.created_at"];
         };
         header: {
           /** Preference */
@@ -183,15 +181,14 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.users.id"];
-          first_name?: parameters["rowFilter.users.first_name"];
-          last_name?: parameters["rowFilter.users.last_name"];
-          gender?: parameters["rowFilter.users.gender"];
-          created_at?: parameters["rowFilter.users.created_at"];
+          id?: parameters["rowFilter.sample_tags.id"];
+          name?: parameters["rowFilter.sample_tags.name"];
+          rate?: parameters["rowFilter.sample_tags.rate"];
+          created_at?: parameters["rowFilter.sample_tags.created_at"];
         };
         body: {
-          /** users */
-          users?: definitions["users"];
+          /** sample_tags */
+          sample_tags?: definitions["sample_tags"];
         };
         header: {
           /** Preference */
@@ -209,9 +206,10 @@ export interface paths {
       parameters: {
         query: {
           id?: parameters["rowFilter.tags.id"];
-          name?: parameters["rowFilter.tags.name"];
-          rate?: parameters["rowFilter.tags.rate"];
           created_at?: parameters["rowFilter.tags.created_at"];
+          user_id?: parameters["rowFilter.tags.user_id"];
+          name?: parameters["rowFilter.tags.name"];
+          weight?: parameters["rowFilter.tags.weight"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -263,9 +261,10 @@ export interface paths {
       parameters: {
         query: {
           id?: parameters["rowFilter.tags.id"];
-          name?: parameters["rowFilter.tags.name"];
-          rate?: parameters["rowFilter.tags.rate"];
           created_at?: parameters["rowFilter.tags.created_at"];
+          user_id?: parameters["rowFilter.tags.user_id"];
+          name?: parameters["rowFilter.tags.name"];
+          weight?: parameters["rowFilter.tags.weight"];
         };
         header: {
           /** Preference */
@@ -281,9 +280,10 @@ export interface paths {
       parameters: {
         query: {
           id?: parameters["rowFilter.tags.id"];
-          name?: parameters["rowFilter.tags.name"];
-          rate?: parameters["rowFilter.tags.rate"];
           created_at?: parameters["rowFilter.tags.created_at"];
+          user_id?: parameters["rowFilter.tags.user_id"];
+          name?: parameters["rowFilter.tags.name"];
+          weight?: parameters["rowFilter.tags.weight"];
         };
         body: {
           /** tags */
@@ -300,23 +300,122 @@ export interface paths {
       };
     };
   };
+  "/sample_users": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.sample_users.id"];
+          first_name?: parameters["rowFilter.sample_users.first_name"];
+          last_name?: parameters["rowFilter.sample_users.last_name"];
+          gender?: parameters["rowFilter.sample_users.gender"];
+          created_at?: parameters["rowFilter.sample_users.created_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["sample_users"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** sample_users */
+          sample_users?: definitions["sample_users"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.sample_users.id"];
+          first_name?: parameters["rowFilter.sample_users.first_name"];
+          last_name?: parameters["rowFilter.sample_users.last_name"];
+          gender?: parameters["rowFilter.sample_users.gender"];
+          created_at?: parameters["rowFilter.sample_users.created_at"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.sample_users.id"];
+          first_name?: parameters["rowFilter.sample_users.first_name"];
+          last_name?: parameters["rowFilter.sample_users.last_name"];
+          gender?: parameters["rowFilter.sample_users.gender"];
+          created_at?: parameters["rowFilter.sample_users.created_at"];
+        };
+        body: {
+          /** sample_users */
+          sample_users?: definitions["sample_users"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
 }
 
 export interface definitions {
   /** @description Join table for many-to-many relation between users and interests tables */
-  user_tags: {
+  sample_user_tags: {
     /**
      * Format: bigint
      * @description Note:
      * This is a Primary Key.<pk/>
-     * This is a Foreign Key to `users.id`.<fk table='users' column='id'/>
+     * This is a Foreign Key to `sample_users.id`.<fk table='sample_users' column='id'/>
      */
     user_id: number;
     /**
      * Format: bigint
      * @description Note:
      * This is a Primary Key.<pk/>
-     * This is a Foreign Key to `tags.id`.<fk table='tags' column='id'/>
+     * This is a Foreign Key to `sample_tags.id`.<fk table='sample_tags' column='id'/>
      */
     tag_id: number;
     /**
@@ -325,7 +424,44 @@ export interface definitions {
      */
     created_at: string;
   };
-  users: {
+  /** @description Interest tags */
+  sample_tags: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /** Format: character varying */
+    name: string;
+    /** Format: real */
+    rate: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at: string;
+  };
+  tags: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: uuid */
+    user_id?: string;
+    /** Format: character varying */
+    name?: string;
+    /** Format: real */
+    weight?: number;
+  };
+  sample_users: {
     /**
      * Format: bigint
      * @description Note:
@@ -343,24 +479,6 @@ export interface definitions {
      * @default now()
      */
     created_at?: string;
-  };
-  /** @description Interest tags */
-  tags: {
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    /** Format: character varying */
-    name: string;
-    /** Format: real */
-    rate: number;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created_at: string;
   };
 }
 
@@ -397,36 +515,48 @@ export interface parameters {
   offset: string;
   /** @description Limiting and Pagination */
   limit: string;
-  /** @description user_tags */
-  "body.user_tags": definitions["user_tags"];
+  /** @description sample_user_tags */
+  "body.sample_user_tags": definitions["sample_user_tags"];
   /** Format: bigint */
-  "rowFilter.user_tags.user_id": string;
+  "rowFilter.sample_user_tags.user_id": string;
   /** Format: bigint */
-  "rowFilter.user_tags.tag_id": string;
+  "rowFilter.sample_user_tags.tag_id": string;
   /** Format: timestamp with time zone */
-  "rowFilter.user_tags.created_at": string;
-  /** @description users */
-  "body.users": definitions["users"];
+  "rowFilter.sample_user_tags.created_at": string;
+  /** @description sample_tags */
+  "body.sample_tags": definitions["sample_tags"];
   /** Format: bigint */
-  "rowFilter.users.id": string;
+  "rowFilter.sample_tags.id": string;
   /** Format: character varying */
-  "rowFilter.users.first_name": string;
-  /** Format: character varying */
-  "rowFilter.users.last_name": string;
-  /** Format: character varying */
-  "rowFilter.users.gender": string;
+  "rowFilter.sample_tags.name": string;
+  /** Format: real */
+  "rowFilter.sample_tags.rate": string;
   /** Format: timestamp with time zone */
-  "rowFilter.users.created_at": string;
+  "rowFilter.sample_tags.created_at": string;
   /** @description tags */
   "body.tags": definitions["tags"];
   /** Format: bigint */
   "rowFilter.tags.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.tags.created_at": string;
+  /** Format: uuid */
+  "rowFilter.tags.user_id": string;
   /** Format: character varying */
   "rowFilter.tags.name": string;
   /** Format: real */
-  "rowFilter.tags.rate": string;
+  "rowFilter.tags.weight": string;
+  /** @description sample_users */
+  "body.sample_users": definitions["sample_users"];
+  /** Format: bigint */
+  "rowFilter.sample_users.id": string;
+  /** Format: character varying */
+  "rowFilter.sample_users.first_name": string;
+  /** Format: character varying */
+  "rowFilter.sample_users.last_name": string;
+  /** Format: character varying */
+  "rowFilter.sample_users.gender": string;
   /** Format: timestamp with time zone */
-  "rowFilter.tags.created_at": string;
+  "rowFilter.sample_users.created_at": string;
 }
 
 export interface operations {}
