@@ -1,12 +1,29 @@
+import { CssBaseline, useMediaQuery } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { SWRConfig } from "swr";
 import { fetcher } from "utils/fetcher";
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const prefersLightMode = useMediaQuery("(prefers-color-scheme: light)");
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: prefersLightMode ? "light" : "dark",
+    },
+  });
+
   return (
     <SWRConfig value={{ fetcher }}>
-      <Component {...pageProps} />
+      <ThemeProvider theme={darkTheme}>
+        <Head>
+          <title>Pessengers</title>
+        </Head>
+        <CssBaseline enableColorScheme />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </SWRConfig>
   );
 }
