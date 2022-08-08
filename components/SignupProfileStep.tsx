@@ -30,7 +30,10 @@ const SignupProfileStep: React.FC<SignupProfileStepProps> = ({ onNext }) => {
     const user = supabase.auth.user();
     console.log(user);
     if (!user) throw new Error("User not found in SignupProfileStep");
-    await supabase.from<definitions["tags"]>("tags").delete();
+    await supabase
+      .from<definitions["tags"]>("tags")
+      .delete()
+      .eq("user_id", user.id);
     const { error } = await supabase.from<definitions["tags"]>("tags").insert(
       tags
         .filter((tag) => tag.name !== "" && tag.weight !== null)
