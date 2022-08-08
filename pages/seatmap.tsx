@@ -1,6 +1,8 @@
-import { Box, Button, TableBody } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -42,7 +44,7 @@ const SeatmapPage: NextPage = () => {
                 {Array(2)
                   .fill(null)
                   .map((_, i) => (
-                    <TableCell>#{i + 1} Interests</TableCell>
+                    <TableCell key={":2-" + i}>#{i + 1} Interests</TableCell>
                   ))}
               </TableRow>
             </TableHead>
@@ -53,7 +55,7 @@ const SeatmapPage: NextPage = () => {
                   {Array(2)
                     .fill(null)
                     .map((_, j) => (
-                      <TableCell>-</TableCell>
+                      <TableCell key={"::2-" + j}>-</TableCell>
                     ))}
                 </TableRow>
               ))}
@@ -71,7 +73,7 @@ const SeatmapPage: NextPage = () => {
                 {Array(3)
                   .fill(null)
                   .map((_, i) => (
-                    <TableCell>#{i + 1} Interests</TableCell>
+                    <TableCell key={":3" + i}>#{i + 1} Interests</TableCell>
                   ))}
               </TableRow>
             </TableHead>
@@ -83,7 +85,7 @@ const SeatmapPage: NextPage = () => {
                     {Array(3)
                       .fill(null)
                       .map((_, j) => (
-                        <TableCell>-</TableCell>
+                        <TableCell key={"::3" + j}>-</TableCell>
                       ))}
                   </TableRow>
                 ))}
