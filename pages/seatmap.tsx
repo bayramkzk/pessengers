@@ -51,7 +51,7 @@ const SeatmapPage: NextPage = () => {
             {Array(8)
               .fill(null)
               .map((_, i) => (
-                <TableRow>
+                <TableRow key={":::2?" + i}>
                   {Array(2)
                     .fill(null)
                     .map((_, j) => (
@@ -81,7 +81,7 @@ const SeatmapPage: NextPage = () => {
               {Array(50)
                 .fill(null)
                 .map((_, i) => (
-                  <TableRow>
+                  <TableRow key={"::3:" + i}>
                     {Array(3)
                       .fill(null)
                       .map((_, j) => (
