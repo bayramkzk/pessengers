@@ -69,7 +69,7 @@ const LoginBox: React.FC = () => {
       <Link href="/auth/signup" passHref>
         <a>
           <Typography color="Highlight">
-            Don't have an account? Sign up here.
+            Don&apos;t have an account? Sign up here.
           </Typography>
         </a>
       </Link>
