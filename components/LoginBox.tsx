@@ -24,7 +24,7 @@ const LoginBox: React.FC = () => {
     setLoading(false);
 
     if (error) setError(error.message);
-    if (user) router.push("/flights");
+    if (user) router.push("/");
   };
 
   return (
