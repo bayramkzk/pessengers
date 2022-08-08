@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/system/Box";
 import { supabase } from "lib/supabase";
 import React from "react";
+import useStoreSignup from "stores/signup";
 import { definitions } from "types/supabase";
 import RadioGroupRating from "./RadioGroupRating";
 
@@ -13,13 +14,13 @@ interface SignupProfileStepProps {
   onNext: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-interface Tag {
-  name: string;
-  weight: number | null;
-}
-
 const SignupProfileStep: React.FC<SignupProfileStepProps> = ({ onNext }) => {
-  const [tags, setTags] = React.useState<Tag[]>([{ name: "", weight: 0 }]);
+  const [tags, insertTag, updateTag, deleteTag] = useStoreSignup((state) => [
+    state.tags,
+    state.insertTag,
+    state.updateTag,
+    state.deleteTag,
+  ]);
   const [loading, setLoading] = React.useState(false);
   const [errors, setErrors] = React.useState<string | null>(null);
 
@@ -74,19 +75,15 @@ const SignupProfileStep: React.FC<SignupProfileStepProps> = ({ onNext }) => {
               type="text"
               value={tag.name}
               onChange={(e) => {
-                setTags((prev) => [
-                  ...prev.slice(0, index),
-                  { ...tag, name: e.target.value },
-                  ...prev.slice(index + 1),
-                ]);
+                updateTag(index, { ...tags[index], name: e.target.value });
 
                 if (index === tags.length - 1) {
                   if (e.target.value) {
-                    setTags((prev) => [...prev, { name: "", weight: 0 }]);
+                    insertTag(index + 1, { name: "", weight: 0 });
                   }
 
                   if (!e.target.value && tags.length !== 1) {
-                    setTags((prev) => prev.slice(0, prev.length - 1));
+                    deleteTag(index);
                   }
                 }
               }}
@@ -97,22 +94,19 @@ const SignupProfileStep: React.FC<SignupProfileStepProps> = ({ onNext }) => {
               <RadioGroupRating
                 value={tag.weight}
                 onChange={(_, value) => {
-                  setTags((prev) => [
-                    ...prev.slice(0, index),
-                    { ...tag, weight: value },
-                    ...prev.slice(index + 1),
-                  ]);
+                  updateTag(index, { ...tags[index], weight: value });
                 }}
               />
             </Box>
 
-            <IconButton size="large">
-              <DeleteIcon
-                onClick={() => {
-                  if (tags.length === 1) return;
-                  setTags([...tags.slice(0, index), ...tags.slice(index + 1)]);
-                }}
-              />
+            <IconButton
+              size="large"
+              onClick={() => {
+                if (tags.length === 1) return;
+                deleteTag(index);
+              }}
+            >
+              <DeleteIcon />
             </IconButton>
           </Box>
         ))}

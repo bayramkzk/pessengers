@@ -5,6 +5,7 @@ import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
 import React from "react";
+import useStoreSignup from "stores/signup";
 import SignupAccountStep from "./SignupAccountStep";
 import SignupProfileStep from "./SignupProfileStep";
 
@@ -15,7 +16,7 @@ const steps = [
 
 const SignupBox: React.FC = () => {
   const router = useRouter();
-  const [activeStep, setActive] = React.useState(0);
+  const { activeStep, nextStep } = useStoreSignup((state) => state);
   const currentStep = steps[activeStep];
 
   return (
@@ -51,7 +52,7 @@ const SignupBox: React.FC = () => {
           if (activeStep === steps.length - 1) {
             router.push("/");
           } else {
-            setActive(activeStep + 1);
+            nextStep();
           }
         }}
       />
