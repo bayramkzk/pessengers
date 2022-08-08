@@ -12,6 +12,14 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const darkTheme = createTheme({
     palette: {
       mode: prefersLightMode ? "light" : "dark",
+      primary: {
+        light: "#e57373",
+        main: "#f44336",
+        dark: "#d32f2f",
+      },
+    },
+    typography: {
+      fontFamily: "Fira Sans, sans-serif",
     },
   });
 
