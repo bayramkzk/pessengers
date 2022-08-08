@@ -10,15 +10,14 @@ import NavMenu from "./NavMenu";
 const ProfileMenu = dynamic(() => import("./ProfileMenu"), { ssr: false });
 
 const pages = [
-  { name: "Flights", href: "/" },
-  { name: "Profile", href: "/profile" },
+  { name: "Flights", href: "/flights" },
   { name: "About", href: "/about" },
 ];
 
 const Header = () => {
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Toolbar disableGutters>
           <LogoLabelDesktop />
           <NavMenu pages={pages} />
