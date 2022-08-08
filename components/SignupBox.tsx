@@ -50,7 +50,7 @@ const SignupBox: React.FC = () => {
       <currentStep.component
         onNext={() => {
           if (activeStep === steps.length - 1) {
-            router.push("/");
+            router.push("/seatmap");
           } else {
             nextStep();
           }

@@ -24,7 +24,7 @@ const LoginBox: React.FC = () => {
     setLoading(false);
 
     if (error) setError(error.message);
-    if (user) router.push("/");
+    if (user) router.push("/seatmap");
   };
 
   return (

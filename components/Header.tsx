@@ -10,7 +10,7 @@ import NavMenu from "./NavMenu";
 const ProfileMenu = dynamic(() => import("./ProfileMenu"), { ssr: false });
 
 const pages = [
-  { name: "Flights", href: "/flights" },
+  { name: "Seat Map", href: "/seatmap" },
   { name: "About", href: "/about" },
 ];
 
